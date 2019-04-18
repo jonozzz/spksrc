@@ -1,5 +1,5 @@
 PKG_NAME = libva-utils
-PKG_VERS = 2.1.0
+PKG_VERS = 2.4.0
 PKG_EXT = tar.gz
 PKG_DIST_NAME = $(PKG_VERS).$(PKG_EXT)
 PKG_DIST_SITE = https://github.com/intel/libva-utils/archive
@@ -20,4 +20,5 @@ include ../../mk/spksrc.cross-cc.mk
 
 .PHONY: libva_utils_configure
 libva_utils_configure:
-	$(RUN) ./autogen.sh
+	$(RUN) NOCONFIGURE=1 ./autogen.sh
+	$(RUN) autoreconf -fiv

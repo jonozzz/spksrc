@@ -1,5 +1,5 @@
 PKG_NAME = ffmpeg
-PKG_VERS = 4.1
+PKG_VERS = 4.0.4
 PKG_EXT = tar.bz2
 PKG_DIST_NAME = $(PKG_NAME)-$(PKG_VERS).$(PKG_EXT)
 PKG_DIST_SITE = http://www.ffmpeg.org/releases
@@ -9,6 +9,7 @@ DEPENDS = cross/flac cross/freetype cross/fribidi cross/lame cross/libass
 DEPENDS += cross/libbluray cross/libvorbis cross/libvpx
 DEPENDS += cross/gnutls cross/opus
 DEPENDS += cross/soxr cross/x264 cross/x265
+DEPENDS += cross/nv-codec-headers
 
 HOMEPAGE = http://www.ffmpeg.org/
 COMMENT  = FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video. It includes libavcodec - the leading audio/video codec library
@@ -60,7 +61,7 @@ endif
 ifeq ($(findstring $(ARCH),$(x64_ARCHES)),$(ARCH))
 DEPENDS += native/nasm cross/libva cross/libva-utils cross/intel-vaapi-driver
 ENV += PATH=$(NASM_PATH):$$PATH
-CONFIGURE_ARGS += --arch=x86_64 --enable-thumb --enable-vaapi
+CONFIGURE_ARGS += --arch=x86_64 --enable-thumb --enable-vaapi --enable-encoder=h264_vaapi --enable-nvenc
 endif
 
 ifeq ($(findstring $(ARCH),$(PPC_ARCHES)),$(ARCH))
