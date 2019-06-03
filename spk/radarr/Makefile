@@ -16,7 +16,7 @@ DESCRIPTION  = Radarr is a movie manager like Couchpotato, but based on the Sona
 RELOAD_UI = yes
 STARTABLE = yes
 DISPLAY_NAME = Radarr
-CHANGELOG = "Update Radarr to v0.2.0.1293."
+CHANGELOG = "Update Radarr to v0.2.0.1344."
 
 HOMEPAGE = https://radarr.video/
 LICENSE  = GPLv3
