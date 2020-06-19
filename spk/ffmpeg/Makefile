@@ -1,4 +1,4 @@
-SPK_NAME = ffmpeg2
+SPK_NAME = ffmpeg
 SPK_VERS = 4.2.3
 SPK_REV = 31
 SPK_ICON = src/ffmpeg.png
@@ -9,7 +9,7 @@ DEPENDS = cross/$(SPK_NAME)
 MAINTAINER = th0ma7
 DESCRIPTION = FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video. It includes libavcodec - the leading audio/video codec library.
 DESCRIPTION_FRE = FFmpeg est une solution complète multiplateforme pour enregistrer, convertir et diffuser du contenu audio et vidéo. Il comprend libavcodec - la principale bibliothèque de codecs audio/vidéo.
-DISPLAY_NAME = ffmpeg2
+DISPLAY_NAME = ffmpeg
 STARTABLE = no
 
 HOMEPAGE = http://www.ffmpeg.org/
