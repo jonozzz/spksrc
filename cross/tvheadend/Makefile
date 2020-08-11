@@ -2,7 +2,7 @@ PKG_NAME = tvheadend
 PKG_VERS = 4.3
 PKG_EXT = tar.gz
 PKG_DOWNLOAD_METHOD = git
-PKG_GIT_HASH = 51a4c5bec7b6fc69dab7b8d559f9b1b881f0eb8e
+PKG_GIT_HASH = ce09077056f9c6558c188d135cec3be85cc9c200
 PKG_DIST_SITE = https://github.com/tvheadend/tvheadend.git
 PKG_DIST_FILE = $(PKG_NAME)-git$(PKG_GIT_HASH).$(PKG_EXT)
 PKG_DIR = $(PKG_NAME)-git$(PKG_GIT_HASH)
@@ -15,6 +15,7 @@ COMMENT  = Tvheadend is a TV streaming server and recorder for Linux, FreeBSD an
 LICENSE  = GPL v3
 
 GNU_CONFIGURE = 1
+PRE_CONFIGURE_TARGET = tvheadend_pre_configure
 
 CONFIGURE_ARGS = --enable-imagecache --enable-bundle --enable-trace --release
 CONFIGURE_ARGS += --disable-bintray_cache --disable-avahi
@@ -50,3 +51,8 @@ ifeq ($(wildcard $(FFMPEG_DIR)),)
 DEPENDS += cross/libva
 endif
 endif
+
+.PHONY: tvheadend_pre_configure
+tvheadend_pre_configure:
+	# Fix so mkbundle finds the pngquant binary
+	@$(RUN) sed -i.bak "s|^pngquant_bin = '/usr|pngquant_bin = '$(STAGING_INSTALL_PREFIX)|g" support/mkbundle
